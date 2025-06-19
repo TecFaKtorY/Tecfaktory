@@ -1,0 +1,21 @@
+{
+	"name": "Tec Faktory",
+	"short_name": "Tec Faktory",
+	"start_url": "/",
+	"display": "standalone",
+	"background_color": "1e1174",
+	"theme_color": "#00c2d1",
+	"description": "we get better by working - website design, laptop repairs and maintenance, branding, and tech services",
+	"icons":[
+		{
+			"src": "/icons/icon-192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "/icons/icon-512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	]
+}
