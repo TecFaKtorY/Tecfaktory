@@ -168,12 +168,28 @@
 
   <section id="contact">
     <h2 style="color: #fff;">Contact Us</h2>
-    <form action="mailto:info.tecfaktory@gmail.com" method="POST" enctype="text/plain">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+    <form onsubmit="return sendToWhatsApp();">
+  <input type="text" id="name" placeholder="Your Name" required>
+  <input type="email" id="email" placeholder="Your Email" required>
+  <textarea id="message" placeholder="Your Message" required></textarea>
+  <button type="submit">Send via WhatsApp</button>
+</form>
+
+<script>
+  function sendToWhatsApp() {
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+
+    const whatsappMessage = `Name: ${name}%0AEmail: ${email}%0AMessage: ${message}`;
+    const phoneNumber = "2349050322014"; // Your WhatsApp number
+
+    const url = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
+    window.open(url, '_blank');
+
+    return false; // Prevent actual form submission
+  }
+</script>
 <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31715.113161280345!2d3.3792056!3d6.5243793!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8d6b7be7cebd%3A0x9c0a2b52a06bb6b7!2sLagos%2C%20Nigeria!5e0!3m2!1sen!2sng!4v1623141139823!5m2!1sen!2sng" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   
   </section>
