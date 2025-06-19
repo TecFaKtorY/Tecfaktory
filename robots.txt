@@ -3,4 +3,4 @@ Disallow: /private/
 Allow: /
 
 Sitemap:
-https://tecfaktory.com/sitemap.xml
+https://tecfaktory.netlify.app/sitemap.xml
