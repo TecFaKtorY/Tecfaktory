@@ -2,27 +2,27 @@
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 
-		<loc>https://tecfaktory.com/</loc>
+		<loc>https://tecfaktory.netlify.app/</loc>
 			<priority>1.0</priority>
 	</url>
 	<url>
 
-		<loc>https://tecfaktory.com/#about</loc>
+		<loc>https://tecfaktory.netlify.app/#about</loc>
 			<priority>0.9</priority>
 	</url>
 	<url>
 
-		<loc>https://tecfaktory.com/#services</loc>
+		<loc>https://tecfaktory.netlify.app/#services</loc>
 			<priority>0.9</priority>
 	</url>
 	<url>
 
-		<loc>https://tecfaktory.com/#portfolio</loc>
+		<loc>https://tecfaktory.netlify.app/#portfolio</loc>
 			<priority>0.8</priority>
 	</url>
 	<url>
 
-		<loc>https://tecfaktory.com/#contact</loc>
+		<loc>https://tecfaktory.netlify.app/#contact</loc>
 			<priority>0.9</priority>
 	</url>
 </urlset>
