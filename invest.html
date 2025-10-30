@@ -1,0 +1,320 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tec Faktory — Invest</title>
+  <meta name="description" content="Invest in Tec Faktory — partnership plans, profit-share, equity and hybrid options. Complete terms, conditions and policies." />
+  <link rel="icon" href="https://tecfaktory.netlify.app/img/tf-logo.png" />
+<meta property="og:title" content="Tec Faktory — Invest" />
+<meta property="og:description" content="Partner with Tec Faktory through profit-share, equity, or hybrid investment plans." />
+<meta property="og:image" content="https://tecfaktory.netlify.app/img/tf-logo.png" />
+  <style>
+    /* Reset & base */
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#9aa5b1; --accent:#06b6d4; --accent-2:#7c3aed; --glass: rgba(255,255,255,0.03);
+      --max-width:1100px;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#071024 0%, #07182a 100%);color:#E6EEF3}
+    a{color:var(--accent)}
+    .container{max-width:var(--max-width);margin:36px auto;padding:24px}/* Header */
+header{display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;gap:14px;align-items:center}
+.logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:800}
+.logo span{font-size:20px}
+h1{margin:0;font-size:22px}
+p.lead{margin:6px 0 0;color:var(--muted)}
+
+/* Top layout */
+.top{display:grid;grid-template-columns:1fr 420px;gap:28px;margin-top:20px}
+@media(max-width:980px){.top{grid-template-columns:1fr}.container{padding:18px}}
+
+input, textarea, select, button { font-size:16px; } /* prevents mobile zoom-in */
+
+/* Card */
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;padding:18px;box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+
+/* Form */
+form{display:flex;flex-direction:column;gap:12px}
+label{font-size:13px;color:var(--muted)}
+input[type=text], input[type=email], input[type=tel], input[type=number], select, textarea{
+  width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit;font-size:15px
+}
+textarea{min-height:90px;resize:vertical}
+.row{display:flex;gap:10px}
+.row .col{flex:1}
+.actions{display:flex;gap:10px;align-items:center}
+button.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#042028;border:none;padding:12px 14px;border-radius:10px;font-weight:700;cursor:pointer}
+button.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px 12px;border-radius:10px;color:var(--muted);cursor:pointer}
+.note{font-size:13px;color:var(--muted)}
+
+/* Plans */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:980px){.plans{grid-template-columns:1fr}}
+.plan{padding:16px;border-radius:12px;background:linear-gradient(180deg,var(--glass), transparent);border:1px solid rgba(255,255,255,0.02)}
+.plan h3{margin:0 0 8px}
+.plan p{margin:0 0 12px;color:var(--muted)}
+.plan .meta{font-weight:700}
+
+/* Accordion / T&C */
+.accordion{margin-top:18px}
+.acc-item{border-radius:10px;overflow:hidden;margin-bottom:8px}
+.acc-head{display:flex;justify-content:space-between;align-items:center;padding:12px;background:rgba(255,255,255,0.02);cursor:pointer}
+.acc-body{padding:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);display:none;color:var(--muted);font-size:14px;line-height:1.5}
+
+/* small sections */
+.muted{color:var(--muted)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:680px){.grid-2{grid-template-columns:1fr}}
+
+footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
+
+/* success */
+.alert{padding:12px;border-radius:8px;background:rgba(6,182,212,0.08);color:var(--accent);border:1px solid rgba(6,182,212,0.12)}
+
+/* small helpers */
+.small{font-size:13px;color:var(--muted)}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div><img src="tecfaktory.netlify.app/img/tf-logo.png" alt="logo" height="70" width="80"/></div>
+        <div>
+          <h1>Become our Partner</h1>
+          <p class="lead">Invest in innovation, growth and community impact. Fill the form to get started — terms are below.</p>
+        </div>
+      </div>
+     
+    </header><main class="top">
+  <!-- Left: Info -->
+
+  <!-- Right: Form -->
+  <aside class="card" aria-labelledby="invest-form">
+    <h2 id="invest-form" style="margin-top:0">Become an Investor</h2>
+    <p class="small muted">Fill this quick form and we'll contact you within 3 business days to discuss next steps.</p>
+
+    <!-- Netlify-ready form -->
+    <form name="invest" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="investForm">
+      <input type="hidden" name="form-name" value="invest" />
+      <input type="hidden" name="bot-field" />
+
+      <label>Full name
+        <input name="name" type="text" required placeholder="Your full name" />
+      </label>
+
+      <label>Email address
+        <input name="email" type="email" required placeholder="you@example.com" />
+      </label>
+
+      <label>Phone number (optional)
+        <input name="phone" type="tel" placeholder="+234 80x xxx xxxx" />
+      </label>
+
+      <label>Investment amount (₦)
+        <input name="amount" type="number" min="100000" step="1000" required placeholder="e.g. 3520000" />
+      </label>
+
+      <label>Select plan
+        <select name="plan" required>
+          <option value="profit">Profit-Sharing (10% monthly)</option>
+          <option value="equity">Equity (10–15%)</option>
+          <option value="hybrid">Hybrid (5–7% + 5–10%)</option>
+        </select>
+      </label>
+
+      <label>Message (optional)
+        <textarea name="message" placeholder="Any notes, preferred payout method, or questions"></textarea>
+      </label>
+
+      <label class="small"><input type="checkbox" id="agree" /> I have read and agree to the <a href="#terms" id="viewTerms">investment terms, conditions & policies</a>.</label>
+
+      <div class="actions">
+        <button type="submit" class="primary" id="submitBtn" disabled>Submit investment interest</button>
+        <button type="button" class="ghost" id="downloadSummary">Download Summary</button>
+      </div>
+
+      <div id="formResponse" style="display:none;margin-top:12px"></div>
+    </form>
+
+    <!--<p class="note">This form is Netlify-ready. If you deploy this page to Netlify, submissions will appear under "Forms" in your Netlify project. Alternatively, configure a serverless function to process submissions and notify your email.</p>-->
+  </aside>
+</main>
+
+<!-- Terms & Conditions -->
+<section id="terms" class="card" style="margin-top:20px">
+  <h2 style="margin-top:0">Terms, Conditions & Policies</h2>
+  <p class="muted">Below are the full terms for Tec Faktory investment plans. Please read carefully. You may expand each section for more detail.</p>
+
+  <div class="accordion" id="accordion">
+    <div class="acc-item">
+      <div class="acc-head"> <strong>1. Investor Benefits</strong> <span class="muted">Click to view</span></div>
+      <div class="acc-body">
+        <p>As a Tec Faktory investor, you will receive:</p>
+        <ul>
+          <li><strong>Regular ROI</strong> according to the chosen plan (profit-share, equity dividends, or hybrid).</li>
+          <li><strong>Quarterly reports</strong> on revenue, expenses, and key performance metrics.</li>
+          <li><strong>Flexibility</strong> to renew, convert, or exit as per the chosen plan's terms.</li>
+          <li><strong>Strategic updates</strong> and invitations to key stakeholder meetings for equity investors.</li>
+          <li><strong>Social impact</strong> — your investment supports local skills development and digital inclusion.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-head"> <strong>2. Investment Plans (Details)</strong> <span class="muted">Click to view</span></div>
+      <div class="acc-body">
+        <h4>Profit-Sharing Plan</h4>
+        <p>Investors receive <strong>10% of monthly net profit</strong> for a period of 12 months. Payments are made monthly after accounting and profit calculation. This plan does not confer ownership.</p>
+
+        <h4>Equity Plan</h4>
+        <p>Equity investors will receive an ownership stake of <strong>10–15%</strong> depending on negotiation and investment size. Equity confers rights to dividends and strategic reporting. Equity is long-term and not subject to monthly payouts unless declared as dividends.</p>
+
+        <h4>Hybrid Plan</h4>
+        <p>This plan combines a smaller monthly profit share (<strong>5–7%</strong>) with an equity stake (<strong>5–10%</strong>). The hybrid plan offers immediate income with long-term upside.</p>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-head"> <strong>3. Use of Funds & Allocation</strong> <span class="muted">Click to view</span></div>
+      <div class="acc-body">
+        <p>Example allocation of funds for the ₦3,520,000 target:</p>
+        <ul>
+          <li>Equipment & Setup — 40%</li>
+          <li>Marketing & Outreach — 25%</li>
+          <li>Team Expansion — 20%</li>
+          <li>Operations & Contingency — 15%</li>
+        </ul>
+        <p class="small muted">Note: Allocations may be adjusted based on operational needs with prior investor notice.</p>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-head"> <strong>4. Terms & Conditions</strong> <span class="muted">Click to view</span></div>
+      <div class="acc-body">
+        <ol>
+          <li>Minimum entry amount: <strong>₦100,000</strong>.</li>
+          <li>All investments are subject to confirmation and entry approval by Tec Faktory management.</li>
+          <li>ROI payments are made from actual profit; past performance does not guarantee future results.</li>
+          <li>Early withdrawals may incur an administrative deduction (up to 10%).</li>
+          <li>Equity transfers require proper documentation and agreement with Tec Faktory's management.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-head"> <strong>5. Policies</strong> <span class="muted">Click to view</span></div>
+      <div class="acc-body">
+        <h4>Data Protection</h4>
+        <p>We collect personal data only to process investments and communicate with investors. Data is stored securely and not shared with third parties without consent.</p>
+
+        <h4>Transparency</h4>
+        <p>Tec Faktory commits to quarterly financial updates and open communication with investors.</p>
+
+        <h4>No Guarantee</h4>
+        <p>Investment returns are subject to operational and market risks. Tec Faktory does not guarantee fixed returns beyond the agreed terms.</p>
+
+        <h4>Dispute Resolution</h4>
+        <p>Disputes will be resolved amicably where possible or under the laws of Lagos State, Nigeria.</p>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-head"> <strong>6. Disclaimer</strong> <span class="muted">Click to view</span></div>
+      <div class="acc-body">
+        <p><strong>Important:</strong> Investing involves risk. By submitting this form you confirm you have read and understood the terms above and that you are legally capable of entering into this agreement.</p>
+      </div>
+    </div>
+  </div>
+  
+   <div class="contact small">
+        <div>info.tecfaktory@zohomail.com</div>
+        <div class="muted">+234 905 032 2014</div>
+      </div>
+
+  <footer>
+    <div>© 2025 Tec Faktory • We get better by working.</div>
+  </footer>
+</section>
+
+  </div>  <script>
+    // Accordion behaviour
+    document.querySelectorAll('.acc-item').forEach(item=>{
+      const head = item.querySelector('.acc-head');
+      const body = item.querySelector('.acc-body');
+      head.addEventListener('click', ()=>{
+        const open = body.style.display === 'block';
+        // close all
+        document.querySelectorAll('.acc-body').forEach(b=>b.style.display='none');
+        if(!open) body.style.display='block';
+      });
+    });
+
+    // Enable submit when checkbox checked
+    const agree = document.getElementById('agree');
+    const submitBtn = document.getElementById('submitBtn');
+    agree.addEventListener('change', ()=>{ submitBtn.disabled = !agree.checked });
+    
+
+    // Form submit handling: Netlify fallback + mailto fallback for local testing
+    const form = document.getElementById('investForm');
+    const responseDiv = document.getElementById('formResponse');
+
+    form.addEventListener('submit', function(e){
+      // Netlify will handle POST when deployed. Prevent double handling in client-only env.
+      // If not on Netlify (no action), we'll open mailto as fallback.
+      // Show a friendly message for now and allow Netlify to process normally.
+
+      // Basic client-side validation
+      if(!agree.checked){
+        e.preventDefault();
+        responseDiv.style.display='block';
+        responseDiv.className='alert';
+        responseDiv.textContent = 'Please agree to the terms before submitting.';
+        return;
+      }
+
+      // Provide immediate UI feedback
+      responseDiv.style.display='block';
+      responseDiv.className='alert';
+      responseDiv.textContent = 'Thanks — your interest has been submitted. If you are testing locally, this will open your email client to complete submission.';
+
+      // If running locally (no Netlify), open mailto as a fallback
+      if(!window.location.hostname.includes('netlify')){
+        e.preventDefault();
+        const data = new FormData(form);
+        const name = data.get('name');
+        const email = data.get('email');
+        const phone = data.get('phone') || 'N/A';
+        const amount = data.get('amount');
+        const plan = data.get('plan');
+        const message = data.get('message') || '';
+        const body = encodeURIComponent(`Investor Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nAmount: ₦${amount}\nPlan: ${plan}\nMessage: ${message}`);
+        const subject = encodeURIComponent('Tec Faktory Investment Interest — ' + name);
+        window.location.href = `mailto:info.tecfaktory@zohomail.com?subject=${subject}&body=${body}`;
+      }
+
+      // If deployed on Netlify, allow normal form POST to proceed (no preventDefault)
+    });
+
+    // Download summary as simple text file
+    document.getElementById('downloadSummary').addEventListener('click', ()=>{
+      const summary = `Tec Faktory Investment Summary\n\nFunding goal: ₦3,520,000\nPlans:\n - Profit-Sharing: 10% monthly (12 months)\n - Equity: 10-15% stake\n - Hybrid: 5-7% monthly + 5-10% equity\nUse of funds: Equipment 40%, Marketing 25%, Team 20%, Ops 15%\nContact: info.tecfaktory@gmail.com`;
+      const blob = new Blob([summary], {type: 'text/plain'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'TecFaktory-Investment-Summary.txt';
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    // Smooth scroll to terms when viewing from form link
+    document.getElementById('viewTerms').addEventListener('click', function(e){ e.preventDefault(); document.getElementById('terms').scrollIntoView({behavior:'smooth'}); });
+
+  </script></body>
+</html>
