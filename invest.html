@@ -242,79 +242,80 @@ footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
   </footer>
 </section>
 
-  </div>  <script>
-    // Accordion behaviour
-    document.querySelectorAll('.acc-item').forEach(item=>{
-      const head = item.querySelector('.acc-head');
-      const body = item.querySelector('.acc-body');
-      head.addEventListener('click', ()=>{
-        const open = body.style.display === 'block';
-        // close all
-        document.querySelectorAll('.acc-body').forEach(b=>b.style.display='none');
-        if(!open) body.style.display='block';
-      });
+  </div>  
+<script>
+  // Accordion behaviour
+  document.querySelectorAll('.acc-item').forEach(item=>{
+    const head = item.querySelector('.acc-head');
+    const body = item.querySelector('.acc-body');
+    head.addEventListener('click', ()=>{
+      const open = body.style.display === 'block';
+      document.querySelectorAll('.acc-body').forEach(b=>b.style.display='none');
+      if(!open) body.style.display='block';
     });
+  });
 
-    // Enable submit when checkbox checked
-    const agree = document.getElementById('agree');
-    const submitBtn = document.getElementById('submitBtn');
-    agree.addEventListener('change', ()=>{ submitBtn.disabled = !agree.checked });
-    
+  // Enable submit when checkbox checked
+  const agree = document.getElementById('agree');
+  const submitBtn = document.getElementById('submitBtn');
+  agree.addEventListener('change', ()=>{ submitBtn.disabled = !agree.checked });
 
-    // Form submit handling: Netlify fallback + mailto fallback for local testing
-    const form = document.getElementById('investForm');
-    const responseDiv = document.getElementById('formResponse');
+  // Form handling
+  const form = document.getElementById('investForm');
+  const responseDiv = document.getElementById('formResponse');
 
-    form.addEventListener('submit', function(e){
-      // Netlify will handle POST when deployed. Prevent double handling in client-only env.
-      // If not on Netlify (no action), we'll open mailto as fallback.
-      // Show a friendly message for now and allow Netlify to process normally.
-
-      // Basic client-side validation
-      if(!agree.checked){
-        e.preventDefault();
-        responseDiv.style.display='block';
-        responseDiv.className='alert';
-        responseDiv.textContent = 'Please agree to the terms before submitting.';
-        return;
-      }
-
-      // Provide immediate UI feedback
+  form.addEventListener('submit', function(e){
+    if(!agree.checked){
+      e.preventDefault();
       responseDiv.style.display='block';
       responseDiv.className='alert';
-      responseDiv.textContent = 'Thanks — your interest has been submitted. If you are testing locally, this will open your email client to complete submission.';
+      responseDiv.textContent = 'Please agree to the terms before submitting.';
+      return;
+    }
 
-      // If running locally (no Netlify), open mailto as a fallback
-      if(!window.location.hostname.includes('netlify')){
-        e.preventDefault();
-        const data = new FormData(form);
-        const name = data.get('name');
-        const email = data.get('email');
-        const phone = data.get('phone') || 'N/A';
-        const amount = data.get('amount');
-        const plan = data.get('plan');
-        const message = data.get('message') || '';
-        const body = encodeURIComponent(`Investor Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nAmount: ₦${amount}\nPlan: ${plan}\nMessage: ${message}`);
-        const subject = encodeURIComponent('Tec Faktory Investment Interest — ' + name);
-        window.location.href = `mailto:info.tecfaktory@zohomail.com?subject=${subject}&body=${body}`;
-      }
+    // Grab data
+    const data = new FormData(form);
+    const name = data.get('name');
+    const email = data.get('email');
+    const phone = data.get('phone') || 'N/A';
+    const amount = data.get('amount');
+    const plan = data.get('plan');
+    const message = data.get('message') || '';
 
-      // If deployed on Netlify, allow normal form POST to proceed (no preventDefault)
-    });
+    // WhatsApp redirect (after small delay)
+    const whatsappMsg = encodeURIComponent(
+      `Hello Tec Faktory 👋, I just submitted an investment interest.\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nAmount: ₦${amount}\nPlan: ${plan}\nMessage: ${message}`
+    );
+    const whatsappURL = `https://wa.me/2349050322014?text=${whatsappMsg}`;
+    
+    setTimeout(()=>{
+      window.open(whatsappURL, '_blank');
+    }, 1500);
 
-    // Download summary as simple text file
-    document.getElementById('downloadSummary').addEventListener('click', ()=>{
-      const summary = `Tec Faktory Investment Summary\n\nFunding goal: ₦3,520,000\nPlans:\n - Profit-Sharing: 10% monthly (12 months)\n - Equity: 10-15% stake\n - Hybrid: 5-7% monthly + 5-10% equity\nUse of funds: Equipment 40%, Marketing 25%, Team 20%, Ops 15%\nContact: info.tecfaktory@gmail.com`;
-      const blob = new Blob([summary], {type: 'text/plain'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url; a.download = 'TecFaktory-Investment-Summary.txt';
-      a.click();
-      URL.revokeObjectURL(url);
-    });
+    // Show feedback message
+    responseDiv.style.display='block';
+    responseDiv.className='alert';
+    responseDiv.textContent = 'Submitting your interest... please wait.';
 
-    // Smooth scroll to terms when viewing from form link
-    document.getElementById('viewTerms').addEventListener('click', function(e){ e.preventDefault(); document.getElementById('terms').scrollIntoView({behavior:'smooth'}); });
+    // Let Netlify process form normally (no preventDefault)
+  });
 
-  </script></body>
+  // Download summary file
+  document.getElementById('downloadSummary').addEventListener('click', ()=>{
+    const summary = `Tec Faktory Investment Summary\n\nFunding goal: ₦3,520,000\nPlans:\n - Profit-Sharing: 10% monthly (12 months)\n - Equity: 10-15% stake\n - Hybrid: 5-7% monthly + 5-10% equity\nUse of funds: Equipment 40%, Marketing 25%, Team 20%, Ops 15%\nContact: info.tecfaktory@zohomail.com`;
+    const blob = new Blob([summary], {type: 'text/plain'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'TecFaktory-Investment-Summary.txt';
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+
+  // Smooth scroll
+  document.getElementById('viewTerms').addEventListener('click', function(e){ 
+    e.preventDefault(); 
+    document.getElementById('terms').scrollIntoView({behavior:'smooth'}); 
+  });
+</script>
+</body>
 </html>
