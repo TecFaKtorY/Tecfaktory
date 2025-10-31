@@ -100,10 +100,13 @@ footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
     <h2 id="invest-form" style="margin-top:0">Become an Investor</h2>
     <p class="small muted">Fill this quick form and we'll contact you within 3 business days to discuss next steps.</p>
 
-    <!-- Netlify-ready form -->
-    <form name="invest" method="POST" data-netlify="true" id="investForm">
-  <input type="hidden" name="form-name" value="invest" />
-  <input type="hidden" name="bot-field" />
+    <!-- Netlify-ready form (honeypot + redirect added) -->
+    <form name="invest" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="investForm" action="/invest.html">
+      <input type="hidden" name="form-name" value="invest" />
+      <p style="display:none">
+        <label>Don’t fill this out if you're human: <input name="bot-field"></label>
+      </p>
+      <input type="hidden" name="redirect" value="/invest.html">
 
       <label>Full name
         <input name="name" type="text" required placeholder="Your full name" />
@@ -261,7 +264,7 @@ footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
   const submitBtn = document.getElementById('submitBtn');
   agree.addEventListener('change', ()=>{ submitBtn.disabled = !agree.checked });
 
-  // Form handling
+  // Form handling (no prevention of Netlify submit)
   const form = document.getElementById('investForm');
   const responseDiv = document.getElementById('formResponse');
 
@@ -274,7 +277,7 @@ footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
       return;
     }
 
-    // Grab data
+    // Grab data (for optional client-side uses)
     const data = new FormData(form);
     const name = data.get('name');
     const email = data.get('email');
@@ -283,22 +286,19 @@ footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
     const plan = data.get('plan');
     const message = data.get('message') || '';
 
-    // WhatsApp redirect (after small delay)
+    // WhatsApp helper (keeps behaviour you added)
     const whatsappMsg = encodeURIComponent(
       `Hello Tec Faktory 👋, I just submitted an investment interest.\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nAmount: ₦${amount}\nPlan: ${plan}\nMessage: ${message}`
     );
     const whatsappURL = `https://wa.me/2349050322014?text=${whatsappMsg}`;
-    
-    setTimeout(()=>{
-      window.open(whatsappURL, '_blank');
-    }, 1500);
+    setTimeout(()=>{ window.open(whatsappURL, '_blank'); }, 1500);
 
     // Show feedback message
     responseDiv.style.display='block';
     responseDiv.className='alert';
     responseDiv.textContent = 'Submitting your interest... please wait.';
 
-    // Let Netlify process form normally (no preventDefault)
+    // Let Netlify process form normally (do not call e.preventDefault())
   });
 
   // Download summary file
